@@ -30,7 +30,7 @@ The bindings come in three flavors:
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>libappindicator-gtk3-java-full</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
 </dependency>
 ```
 
@@ -111,7 +111,7 @@ As the according jar has a size of ~9,6M, I decided to provide a **reduced varia
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>libappindicator-gtk3-java-minimal</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
 </dependency>
 ```
 ### libappindicator-gtk3-java-minimal 1.1.0 - minimal is compatible to both libraries
@@ -130,7 +130,7 @@ Starting with version 1.1.0, the `minimal` artifact is compatible to libayatana-
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>libayatana-appindicator-java-full</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
 </dependency>
 ```
 
