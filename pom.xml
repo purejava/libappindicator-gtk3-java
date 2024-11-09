@@ -6,7 +6,7 @@
 
     <groupId>org.purejava</groupId>
     <artifactId>libayatana-appindicator-java-full</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3-SNAPSHOT</version>
 
     <name>libayatana-appindicator-java-full</name>
     <description>Java bindings for libayatana-appindicator in 100% pure Java</description>
