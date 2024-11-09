@@ -6,7 +6,7 @@
 
     <groupId>org.purejava</groupId>
     <artifactId>libappindicator-gtk3-java-full</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
 
     <name>libappindicator-gtk3-java-full</name>
     <description>Java bindings for libappindicator-gtk3 in 100% pure Java</description>
