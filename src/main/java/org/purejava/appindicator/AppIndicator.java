@@ -45,6 +45,7 @@ public final class AppIndicator {
 
         allPath.add("/usr/lib"); // for systems, that don't implement multiarch
         allPath.add("/app/lib"); // for flatpak and libraries in the flatpak sandbox
+        allPath.add("/usr/lib64"); // for Fedora-like distributions
         for (String path : allPath) {
             try {
                 System.load(path + File.separator + AYATANA_APPINDICATOR_VERSION);
@@ -66,7 +67,10 @@ public final class AppIndicator {
             }
         }
 
-        // When loading via System.load wasn't successful, try to load via System.loadLibrary
+        // When loading via System.load wasn't successful, try to load via System.loadLibrary.
+        // System.loadLibrary builds the libname by prepending the prefix JNI_LIB_PREFIX
+        // and appending the suffix JNI_LIB_SUFFIX. This usually does not work for library files
+        // with an ending like '3.so.1'.
         if (!isLoaded) {
             try {
                 System.loadLibrary(AYATANA_APPINDICATOR_LIBNAME_VERSION);
