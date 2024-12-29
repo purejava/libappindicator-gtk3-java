@@ -138,6 +138,6 @@ Starting with version 1.1.0, the `minimal` artifact is compatible to libayatana-
 For documentation please take a look at the [Wiki](https://github.com/purejava/appindicator-gtk3-java/wiki).
 
 # Copyright
-Copyright (C) 2023-2024 Ralph Plawetzki
+Copyright (C) 2023-2025 Ralph Plawetzki
 
 The libappindicator-gtk3-java logo is made from [Icon Fonts](http://www.onlinewebfonts.com/icon) and is licensed by CC BY 3.0
