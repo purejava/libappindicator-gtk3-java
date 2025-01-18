@@ -26,6 +26,11 @@ The bindings come in three flavors:
 - harfbuzz
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.purejava/libappindicator-gtk3-java-full.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=libappindicator-gtk3-java-full&smo=true&namespace=org.purejava)
+### Gradle
+```groovy
+implementation group: 'org.purejava', name: 'libappindicator-gtk3-java-full', version: '1.4.2'
+```
+### Maven
 ```java
 <dependency>
     <groupId>org.purejava</groupId>
@@ -107,6 +112,11 @@ As the according jar has a size of ~9,6M, I decided to provide a **reduced varia
 - APP_INDICATOR_STATUS_ATTENTION
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.purejava/libappindicator-gtk3-java-minimal.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=libappindicator-gtk3-java-minimal&smo=true&namespace=org.purejava)
+### Gradle
+```groovy
+implementation group: 'org.purejava', name: 'libappindicator-gtk3-java-minimal', version: '1.4.2'
+```
+### Maven
 ```java
 <dependency>
     <groupId>org.purejava</groupId>
@@ -126,6 +136,11 @@ Starting with version 1.1.0, the `minimal` artifact is compatible to libayatana-
 - harfbuzz
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.purejava/libayatana-appindicator-java-full.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=libayatana-appindicator-java-full&smo=true&namespace=org.purejava)
+### Gradle
+```groovy
+implementation group: 'org.purejava', name: 'libayatana-appindicator-java-full', version: '1.4.2'
+```
+### Maven
 ```java
 <dependency>
     <groupId>org.purejava</groupId>
