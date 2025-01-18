@@ -43,7 +43,6 @@ jobs:
 
       - name: Build package
         run: ./gradlew clean build
-        env:
 
       - name: Publish package
         run: ./gradlew publishToSonatype closeSonatypeStagingRepository
