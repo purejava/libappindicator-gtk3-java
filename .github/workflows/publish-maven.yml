@@ -1,4 +1,5 @@
 name: Publish libappindicator-gtk3-java-full to Maven Central
+
 on:
   release:
     types: [published]
@@ -11,25 +12,41 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/') # only allow publishing tagged versions
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-            ref: 'develop'
-      - uses: actions/setup-java@v3
+          ref: 'develop'
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
+          java-version: '22'
           distribution: 'zulu'
-          java-version: 21
-          cache: 'maven'
-          server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
-          gpg-private-key: ${{ secrets.RELEASES_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
-      - name: Enforce project version ${{ github.event.release.tag_name }}
-        run: mvn versions:set -B -DnewVersion="${{ github.event.release.tag_name }}"
-      - name: Deploy
-        run: mvn deploy -B -DskipTests -Psign,deploy-central --no-transfer-progress
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Import GPG key
+        run: |
+          echo "$GPG_SIGNING_KEY_PW" | gpg --batch --import --yes --passphrase-fd 0 <(echo -n "$GPG_SIGNING_KEY_B64" | base64 --decode)
         env:
-          MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.RELEASES_GPG_PASSPHRASE }}
+          GPG_SIGNING_KEY_B64: ${{ secrets.GPG_PRIVATE_KEY_B64 }}
+          GPG_SIGNING_KEY_PW: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Setup GPG key information
+        run: |
+          mkdir -p ~/.gradle
+          echo "signing.gnupg.passphrase=${GPG_SIGNING_KEY_PW}" >> ~/.gradle/gradle.properties
+        env:
+          GPG_SIGNING_KEY_PW: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Build package
+        run: ./gradlew clean build
+        env:
+
+      - name: Publish package
+        run: ./gradlew publishToSonatype closeSonatypeStagingRepository
+        env:
+          SONATYPE_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
